@@ -55,7 +55,7 @@
     /* HERO */
     .hero { display:grid; grid-template-columns: 1fr 0.8fr; gap: 16px; align-items: center; padding: 16px 0 0; }
     .hero-card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
-    h1 { font-size: clamp(24px, 6vw, 40px); line-height: 1.18; margin: 0 0 6px; letter-spacing: -0.01em; }
+    h1 { font-size: clamp(24px, 6.8vw, 40px); line-height: 1.22; margin: 0 0 6px; letter-spacing: -0.01em; text-wrap: balance; word-break: keep-all;}
     h2 { font-size: clamp(16px, 2.5vw, 20px); font-weight: 600; margin: 0; color: var(--muted); }
     .cta { display:flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
     .btn { display:inline-flex; align-items:center; gap:8px; text-decoration:none; color: white; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: 1px solid color-mix(in srgb, var(--brand) 25%, var(--border)); padding: 10px 14px; border-radius: 12px; box-shadow: var(--shadow); }
@@ -103,22 +103,36 @@
 
     footer { opacity:.9; padding: 16px 0 44px; border-top: 1px solid var(--border); margin-top: 16px; }
 
-    /* Mobile responsiveness */
-    @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-card { padding: 16px; }
-    }
+    /* --- MOBILE POLISH: hero title + spacing + grid --- */
     @media (max-width: 820px) {
-      nav { display:flex; gap: 4px; flex-wrap: wrap; }
-      nav a { padding: 6px 10px; }
-      .container { padding: 16px; }
-      h1 { font-size: clamp(24px, 6.4vw, 38px); line-height: 1.2; }
+      /* Make cards single-column */
+      .grid .col-6, .grid .col-4 { grid-column: span 12; }
     }
-    @media (max-width: 480px) {
-      .container { padding: 14px; }
-      .hero { gap: 12px; }
-      .section-title h3 { font-size: 18px; }
+    @media (max-width: 600px) {
+      /* Title scales responsibly and wraps nicely */
+      h1 {
+        font-size: clamp(24px, 6.8vw + 0.2rem, 38px);
+        line-height: 1.22;
+        letter-spacing: -0.015em;
+        text-wrap: balance;
+        word-break: keep-all;
+        margin-bottom: 6px;
+      }
+      /* Stack hero, tighten spacing */
+      .hero { grid-template-columns: 1fr; gap: 12px; padding: 12px 0 0; }
+      .hero-card { padding: 14px; }
+      /* Hide decorative blob on very small screens */
+      .portrait-wrap { display: none; }
+      /* Trim section spacing */
+      section { margin: 14px 0; }
     }
+
+    /* Prevent media overflow */
+    img, svg, video { max-width: 100%; height: auto; }
+    .thumb { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
+
+    /* Anchors visible under sticky header */
+    section[id] { scroll-margin-top: 84px; }
   </style>
 </head>
 <body>

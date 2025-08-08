@@ -1,8 +1,13 @@
-# Portfolio — Mobile-Responsive Hero + Real Résumé
+# Portfolio Bundle — Mobile Patch + Résumé without Humana
 Generated 2025-08-08
 
-## Changes
-- **Hero title** responsive via `clamp(24px, 6vw, 40px)` + line-height 1.18 (keeps presence without being too big on phones).
-- **Spacing** tightened: smaller hero padding & section margins to remove the big gap.
-- **Resume** uses your uploaded DOCX converted to `assets/resume.pdf` (best-effort conversion).
-- **Favicon** retained.
+## What’s included
+- Mobile CSS polish: responsive hero title, tighter spacing, single-column grid on phones, decorative blob hidden at <=600px.
+- `assets/resume.pdf` regenerated from your DOCX with the Humana section removed.
+- Favicon preserved.
+
+## Deploy
+1. Unzip and copy the contents of `portfolio-site/` into your repo (overwrite files).
+2. Commit & push to GitHub.
+
+If you prefer your original PDF export for exact formatting, replace `assets/resume.pdf` with your own exported PDF and push again.
