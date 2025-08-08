@@ -1,17 +1,11 @@
-# Nithya Gujiluva Ravindran — Portfolio (v3)
+# Portfolio — Two Fixes Only (with favicon)
+Generated 2025-08-08
 
-Fixes + Open Graph + favicon.
+## Fixes
+1. **Resume button** is a direct link to `assets/resume.pdf` (works on user & project sites).
+2. **Mobile responsiveness**: nav visible at small widths, hero stacks, images are responsive, thumbnails use aspect-ratio, no overflow.
 
-## What’s included
-- ✅ Direct résumé links: `assets/resume.pdf`
-- ✅ Mobile responsiveness (nav visible, grid wrap, anchor offset, responsive media)
-- ✅ Open Graph + Twitter meta (social preview)
-- ✅ Favicon (`assets/favicon.svg`)
-- ✅ Social preview image: `assets/og-image.png` (or `og-image.svg` fallback)
-
-## Deploy
-1. Replace `assets/resume.pdf` with your real file (and `assets/avatar.jpg` if you want).
-2. Commit & push to GitHub.
-3. GitHub Pages: Settings → Pages → Deploy from a branch → `main` / `(root)`.
-
-Generated 2025-08-08.
+## How to use
+1. Replace `assets/resume.pdf` with your real resume.
+2. (Optional) Replace `assets/avatar.jpg` with a headshot.
+3. Push to your GitHub repo.
