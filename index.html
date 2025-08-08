@@ -6,18 +6,32 @@
   <title>Nithya Gujiluva Ravindran – Portfolio</title>
   <meta name="description" content="Portfolio of Nithya Gujiluva Ravindran – Full Stack .NET Developer in Mount Laurel, NJ. Projects, skills, and contact." />
   <meta name="theme-color" content="#7c3aed" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nithya Gujiluva Ravindran – Portfolio" />
+  <meta property="og:description" content="Full Stack .NET Developer. Projects, skills, and contact." />
+  <meta property="og:image" content="assets/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nithya Gujiluva Ravindran – Portfolio" />
+  <meta name="twitter:description" content="Full Stack .NET Developer. Projects, skills, and contact." />
+  <meta name="twitter:image" content="assets/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/favicon.svg">
+
   <style>
-    /* ==================
-       THEME & TOKENS
-       ================== */
+    /* ================== THEME & TOKENS ================== */
     :root {
-      /* Light */
       --bg: #f8fafc;
       --panel: #ffffff;
       --text: #0f172a;
       --muted: #475569;
-      --brand: #7c3aed;       /* purple */
-      --brand-2: #06b6d4;     /* cyan */
+      --brand: #7c3aed;
+      --brand-2: #06b6d4;
       --ring: rgba(124,58,237,.25);
       --border: #e2e8f0;
       --shadow: 0 10px 30px rgba(2,8,23,.08);
@@ -39,17 +53,17 @@
                 linear-gradient(180deg, #0b1020 0%, #0b1020 100%);
       }
     }
-    [data-theme="dark"] { /* manual override */ }
+    [data-theme="dark"] {} /* manual override */
 
-    /* Base */
+    /* ============== Base & Layout ============== */
     * { box-sizing: border-box }
     html, body { height: 100% }
     body { margin: 0; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial; color: var(--text); background: var(--grad); }
     a { color: inherit }
+    img, svg, video { max-width: 100%; height: auto; } /* responsive media */
 
     .container { max-width: 1180px; margin: 0 auto; padding: 24px; }
 
-    /* Nav */
     header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); }
     .topbar { display:flex; align-items:center; gap: 16px; padding: 10px 0; }
     .brand { display:flex; align-items:center; gap: 12px; font-weight: 800; letter-spacing: .2px; }
@@ -81,6 +95,7 @@
 
     /* Sections */
     section { margin: 34px 0; }
+    section[id] { scroll-margin-top: 84px; } /* keep anchors visible under sticky header */
     .section-title { display:flex; align-items:center; justify-content:space-between; gap: 12px; margin: 0 0 14px; }
     .section-title h3 { margin:0; font-size: 22px; letter-spacing:.2px }
     .section-sub { color: var(--muted); font-size: 14px }
@@ -90,8 +105,8 @@
     .col-6 { grid-column: span 6; }
     .col-4 { grid-column: span 4; }
     .col-12 { grid-column: span 12; }
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-    .thumb { height: 180px; border-radius: 12px; border:1px solid var(--border); background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 8%, transparent), color-mix(in srgb, var(--brand-2) 8%, transparent)); }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; min-width: 0; }
+    .thumb { aspect-ratio: 16 / 9; height: auto; border-radius: 12px; border:1px solid var(--border); background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 8%, transparent), color-mix(in srgb, var(--brand-2) 8%, transparent)); object-fit: cover; }
     .card h4 { margin: 10px 0 6px; font-size: 18px }
     .meta { color: var(--muted); font-size: 13px }
     .card .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px }
@@ -99,7 +114,7 @@
     .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(2,8,23,.12); }
 
     /* Timeline */
-    .timeline { position:relative; display:grid; gap:16px; }
+    .timeline { position:relative; display:grid; gap:16px; min-width: 0; }
     .timeline::before { content:""; position:absolute; left: 10px; top:0; bottom:0; width:2px; background: linear-gradient(var(--brand), var(--brand-2)); opacity:.4 }
     .titem { position:relative; padding-left: 28px; }
     .titem::before { content:""; position:absolute; left:4px; top:7px; width:12px; height:12px; border-radius:50%; background: linear-gradient(var(--brand), var(--brand-2)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 25%, transparent) }
@@ -113,19 +128,17 @@
     /* Contact CTA */
     .cta-band { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:18px; border:1px solid var(--border); border-radius:16px; background: linear-gradient(135deg, color-mix(in srgb, var(--panel) 92%, transparent), color-mix(in srgb, var(--panel) 98%, transparent)); box-shadow: var(--shadow) }
 
-    /* Utilities */
-    .muted { color: var(--muted); }
-
-    footer { opacity:.9; padding: 20px 0 60px; border-top: 1px solid var(--border); margin-top: 24px; }
-
-    /* Responsive */
-    @media (max-width: 1000px) { .hero { grid-template-columns: 1fr } }
-    @media (max-width: 820px) { .col-6, .col-4 { grid-column: span 12 } nav { display:none } }
-
-    /* Motion respect */
-    @media (prefers-reduced-motion: reduce) {
-      .track { animation: none !important }
-      .card:hover { transform: none }
+    /* Responsive tweaks */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px) {
+      nav { display:flex; gap: 4px; flex-wrap: wrap; } /* keep nav visible */
+      nav a { padding: 6px 10px; }
+      .container { padding: 18px; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 14px; }
     }
   </style>
 </head>
@@ -153,9 +166,9 @@
       <div class="hero-card">
         <h1>Builder of clean, robust .NET apps</h1>
         <h2 class="muted">Full Stack .NET Developer in Mount Laurel, NJ</h2>
-        <p class="muted">I design and ship data‑driven web apps and APIs using C#, ASP.NET, MVC/Web API, and solid SQL. I love tidy UI, performant APIs, and pragmatic automation.</p>
+        <p class="muted">I design and ship data-driven web apps and APIs using C#, ASP.NET, MVC/Web API, and solid SQL. I love tidy UI, performant APIs, and pragmatic automation.</p>
         <div class="cta">
-          <a class="btn" id="downloadBtn" href="#">Download Résumé</a>
+          <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
           <a class="btn alt" href="#work">See My Work ↓</a>
         </div>
         <div class="social" aria-label="Social links">
@@ -184,7 +197,7 @@
     <section id="work">
       <div class="section-title">
         <h3>Selected Work</h3>
-        <div class="section-sub">Case‑study style highlights of real work. Swap these with your projects.</div>
+        <div class="section-sub">Case-study style highlights of real work. Swap these with your projects.</div>
       </div>
       <div class="grid">
         <article class="card col-6">
@@ -196,7 +209,7 @@
         <article class="card col-6">
           <div class="thumb" role="img" aria-label="Console recovery tool"></div>
           <h4>Update Recovery Console</h4>
-          <div class="meta">Console app to retry failed cross‑system updates and email run reports.</div>
+          <div class="meta">Console app to retry failed cross-system updates and email run reports.</div>
           <div class="tags"><span class="tag">C#</span><span class="tag">ADO.NET</span><span class="tag">SQL Server</span></div>
         </article>
         <article class="card col-6">
@@ -218,7 +231,7 @@
     <section id="about">
       <div class="section-title"><h3>About</h3></div>
       <div class="card">
-        <p class="muted">I’m a pragmatic developer who enjoys making complex things feel simple. My strengths: clean architecture, tidy UIs, and collaborating well with product & QA. In past roles, I’ve helped ship features faster by smoothing the hand‑offs and automating the repetitive bits.</p>
+        <p class="muted">I’m a pragmatic developer who enjoys making complex things feel simple. My strengths: clean architecture, tidy UIs, and collaborating well with product & QA. In past roles, I’ve helped ship features faster by smoothing the hand-offs and automating the repetitive bits.</p>
       </div>
     </section>
 
@@ -256,7 +269,7 @@
         <div class="titem card">
           <strong>Software Engineer Trainee</strong> — Verizon India <span class="muted">(Mar 2011 – Apr 2013)</span>
           <ul class="muted">
-            <li>Recovery console to retry failed cross‑system updates; automated reports.</li>
+            <li>Recovery console to retry failed cross-system updates; automated reports.</li>
           </ul>
         </div>
       </div>
@@ -266,7 +279,7 @@
     <section id="testimonials">
       <div class="section-title"><h3>Kind Words</h3><div class="section-sub">Add short quotes from peers/managers later.</div></div>
       <div class="slider card" aria-live="polite">
-        <div class="slide active"><p class="quote">“Nithya is dependable and detail‑oriented. She anticipates edge cases and keeps quality high.”</p></div>
+        <div class="slide active"><p class="quote">“Nithya is dependable and detail-oriented. She anticipates edge cases and keeps quality high.”</p></div>
         <div class="slide"><p class="quote">“Great collaborator — communicates clearly and moves projects forward.”</p></div>
       </div>
     </section>
@@ -279,7 +292,7 @@
           <div style="font-weight:700">Let’s build something useful.</div>
           <div class="muted">Email <a href="mailto:grnithi@gmail.com">grnithi@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/grnithi" target="_blank" rel="noopener">LinkedIn</a>.</div>
         </div>
-        <a class="btn" id="resumeBtn" href="#">Résumé (PDF)</a>
+        <a class="btn" href="assets/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
       </div>
     </section>
 
@@ -300,7 +313,7 @@
       });
     });
 
-    // Theme toggle with persistence (respects system pref, lets user override)
+    // Theme toggle with persistence
     const root = document.documentElement;
     const key = 'theme-pref';
     const saved = localStorage.getItem(key);
@@ -313,30 +326,21 @@
       localStorage.setItem(key, next);
     });
 
-    // Dynamic year
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Résumé buttons: expects /assets/resume.pdf
-    function openResume(){
-      const url = new URL(window.location.href);
-      const resumePath = url.origin + url.pathname.replace(/\/[^\/]*$/, '/') + 'assets/resume.pdf';
-      window.open(resumePath, '_blank');
-    }
-    document.getElementById('downloadBtn')?.addEventListener('click', e => { e.preventDefault(); openResume(); });
-    document.getElementById('resumeBtn')?.addEventListener('click', e => { e.preventDefault(); openResume(); });
-
-    // Skills marquee (auto‑scroll)
+    // Skills marquee (auto-scroll)
     const track = document.getElementById('track');
     let offset = 0;
     function loop(){
-      offset -= 0.4; // speed
+      offset -= 0.4;
       track.style.transform = `translateX(${offset}px)`;
       if (Math.abs(offset) > track.scrollWidth/2) offset = 0;
       requestAnimationFrame(loop);
     }
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) loop();
 
-    // Simple testimonial slider
+    // Testimonial slider
     const slides = Array.from(document.querySelectorAll('.slide'));
     let i = 0; setInterval(() => {
       slides[i].classList.remove('active');

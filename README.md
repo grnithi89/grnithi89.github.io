@@ -1,27 +1,17 @@
-# Nithya Gujiluva Ravindran — Portfolio
+# Nithya Gujiluva Ravindran — Portfolio (v3)
 
-Single-file portfolio site for GitHub Pages.
+Fixes + Open Graph + favicon.
 
-## Structure
-```
-/
-  index.html
-  /assets
-    avatar.jpg        # optional headshot (replace with your photo)
-    resume.pdf        # your latest resume (replace this file)
-```
+## What’s included
+- ✅ Direct résumé links: `assets/resume.pdf`
+- ✅ Mobile responsiveness (nav visible, grid wrap, anchor offset, responsive media)
+- ✅ Open Graph + Twitter meta (social preview)
+- ✅ Favicon (`assets/favicon.svg`)
+- ✅ Social preview image: `assets/og-image.png` (or `og-image.svg` fallback)
 
-## Deploy to GitHub Pages
-1. Create a new GitHub repo (e.g., `portfolio`) and keep it Public.
-2. Upload the files in this folder to the repo (or push via Git).
-3. In **Settings → Pages**, set:
-   - **Source**: `Deploy from a branch`
-   - **Branch**: `main` and `/ (root)`
-4. Save. Your site will be live at `https://USERNAME.github.io/REPO/` soon.
+## Deploy
+1. Replace `assets/resume.pdf` with your real file (and `assets/avatar.jpg` if you want).
+2. Commit & push to GitHub.
+3. GitHub Pages: Settings → Pages → Deploy from a branch → `main` / `(root)`.
 
-## Updating
-- Replace `assets/resume.pdf` with your latest resume.
-- Optional: replace `assets/avatar.jpg` with a portrait (the image is hidden automatically if missing).
-
----
 Generated 2025-08-08.
