@@ -36,73 +36,89 @@
                 linear-gradient(180deg, #0b1020 0%, #0b1020 100%);
       }
     }
-    [data-theme="dark"] {}
 
     * { box-sizing: border-box }
     html, body { height: 100% }
     body { margin: 0; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial; color: var(--text); background: var(--grad); }
     a { color: inherit }
     img, svg, video { max-width: 100%; height: auto; }
-    .container { max-width: 1180px; margin: 0 auto; padding: 24px; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 20px; }
 
     header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); }
-    .topbar { display:flex; align-items:center; gap: 16px; padding: 10px 0; }
-    .brand { display:flex; align-items:center; gap: 12px; font-weight: 800; letter-spacing: .2px; }
-    .logo { width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow: var(--shadow); }
+    .topbar { display:flex; align-items:center; gap: 12px; padding: 8px 0; }
+    .brand { display:flex; align-items:center; gap: 10px; font-weight: 800; letter-spacing: .2px; }
+    .logo { width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow: var(--shadow); }
     nav { margin-left:auto; display:flex; gap: 6px; flex-wrap: wrap; align-items:center; }
-    nav a { text-decoration:none; padding: 8px 12px; border-radius: 10px; color: var(--muted); }
+    nav a { text-decoration:none; padding: 8px 10px; border-radius: 10px; color: var(--muted); }
     nav a:hover, nav a:focus { outline: none; color: var(--text); background: color-mix(in srgb, var(--panel) 80%, transparent); box-shadow: 0 0 0 6px var(--ring); }
 
-    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; padding: 26px 0 8px; }
-    .hero-card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px; box-shadow: var(--shadow); }
-    h1 { font-size: clamp(30px, 5vw, 56px); line-height: 1.05; margin: 0 0 8px; letter-spacing: -0.02em; }
-    h2 { font-size: clamp(18px, 2.2vw, 22px); font-weight: 600; margin: 0; color: var(--muted); }
-    .cta { display:flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+    /* HERO */
+    .hero { display:grid; grid-template-columns: 1fr 0.8fr; gap: 16px; align-items: center; padding: 16px 0 0; }
+    .hero-card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: var(--shadow); }
+    h1 { font-size: clamp(24px, 6vw, 40px); line-height: 1.18; margin: 0 0 6px; letter-spacing: -0.01em; }
+    h2 { font-size: clamp(16px, 2.5vw, 20px); font-weight: 600; margin: 0; color: var(--muted); }
+    .cta { display:flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
     .btn { display:inline-flex; align-items:center; gap:8px; text-decoration:none; color: white; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: 1px solid color-mix(in srgb, var(--brand) 25%, var(--border)); padding: 10px 14px; border-radius: 12px; box-shadow: var(--shadow); }
     .btn.alt { color: var(--text); background: var(--panel); border: 1px dashed var(--border); }
-    .social { display:flex; gap: 10px; margin-top: 14px; }
+    .social { display:flex; gap: 8px; margin-top: 10px; }
     .social a { display:inline-flex; padding:8px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); }
 
     .portrait-wrap { position: relative; }
     .blob { position: relative; aspect-ratio: 1 / 1; border-radius: 30% 70% 60% 40% / 35% 45% 55% 65%; background: radial-gradient(circle at 30% 20%, rgba(124,58,237,.45), transparent 40%), radial-gradient(circle at 70% 80%, rgba(6,182,212,.45), transparent 35%), linear-gradient(135deg, color-mix(in srgb, var(--panel) 80%, transparent), color-mix(in srgb, var(--panel) 95%, transparent)); border:1px solid var(--border); box-shadow: var(--shadow); display:grid; place-items:center; overflow:hidden; }
     .blob img { width: 70%; border-radius: 16px; opacity:.95; }
 
-    .scroller { overflow:hidden; border: 1px solid var(--border); background: var(--panel); border-radius: 14px; margin-top: 14px; }
-    .track { display:flex; gap: 28px; padding: 10px 18px; will-change: transform; }
+    /* Marquee */
+    .scroller { overflow:hidden; border: 1px solid var(--border); background: var(--panel); border-radius: 14px; margin-top: 10px; }
+    .track { display:flex; gap: 22px; padding: 10px 14px; will-change: transform; }
     .pill { font-size: 14px; padding: 6px 10px; border-radius: 999px; border: 1px dashed color-mix(in srgb, var(--brand) 35%, var(--border)); white-space: nowrap; }
 
-    section { margin: 34px 0; }
-    section[id] { scroll-margin-top: 84px; }
-    .section-title { display:flex; align-items:center; justify-content:space-between; gap: 12px; margin: 0 0 14px; }
-    .section-title h3 { margin:0; font-size: 22px; letter-spacing:.2px }
+    /* Sections */
+    section { margin: 18px 0; }
+    section[id] { scroll-margin-top: 80px; }
+    .section-title { display:flex; align-items:center; justify-content:space-between; gap: 10px; margin: 0 0 8px; }
+    .section-title h3 { margin:0; font-size: 20px; letter-spacing:.2px }
     .section-sub { color: var(--muted); font-size: 14px }
 
-    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    /* Projects */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 12px; }
     .col-6 { grid-column: span 6; }
     .col-4 { grid-column: span 4; }
     .col-12 { grid-column: span 12; }
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; min-width: 0; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 12px; box-shadow: var(--shadow); position: relative; overflow: hidden; min-width: 0; }
     .thumb { aspect-ratio: 16 / 9; height: auto; border-radius: 12px; border:1px solid var(--border); background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 8%, transparent), color-mix(in srgb, var(--brand-2) 8%, transparent)); object-fit: cover; }
-    .card h4 { margin: 10px 0 6px; font-size: 18px }
+    .card h4 { margin: 8px 0 6px; font-size: 18px }
     .meta { color: var(--muted); font-size: 13px }
     .card .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px }
     .tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px dashed color-mix(in srgb, var(--brand) 35%, var(--border)); }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(2,8,23,.12); }
+    .card:hover { transform: translateY(-1px); box-shadow: 0 12px 26px rgba(2,8,23,.10); }
 
-    .timeline { position:relative; display:grid; gap:16px; min-width: 0; }
-    .timeline::before { content:""; position:absolute; left: 10px; top:0; bottom:0; width:2px; background: linear-gradient(var(--brand), var(--brand-2)); opacity:.4 }
+    /* Timeline */
+    .timeline { position:relative; display:grid; gap:12px; min-width: 0; }
+    .timeline::before { content:""; position:absolute; left: 10px; top:0; bottom:0; width:2px; background: linear-gradient(var(--brand), var(--brand-2)); opacity:.35 }
     .titem { position:relative; padding-left: 28px; }
-    .titem::before { content:""; position:absolute; left:4px; top:7px; width:12px; height:12px; border-radius:50%; background: linear-gradient(var(--brand), var(--brand-2)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 25%, transparent) }
+    .titem::before { content:""; position:absolute; left:4px; top:7px; width:12px; height:12px; border-radius:50%; background: linear-gradient(var(--brand), var(--brand-2)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent) }
 
-    .cta-band { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:18px; border:1px solid var(--border); border-radius:16px; background: linear-gradient(135deg, color-mix(in srgb, var(--panel) 92%, transparent), color-mix(in srgb, var(--panel) 98%, transparent)); box-shadow: var(--shadow) }
+    /* Contact CTA */
+    .cta-band { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10px; padding:14px; border:1px solid var(--border); border-radius:14px; background: linear-gradient(135deg, color-mix(in srgb, var(--panel) 92%, transparent), color-mix(in srgb, var(--panel) 98%, transparent)); box-shadow: var(--shadow) }
 
-    @media (max-width: 1024px) { .hero { grid-template-columns: 1fr; } }
+    footer { opacity:.9; padding: 16px 0 44px; border-top: 1px solid var(--border); margin-top: 16px; }
+
+    /* Mobile responsiveness */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { padding: 16px; }
+    }
     @media (max-width: 820px) {
       nav { display:flex; gap: 4px; flex-wrap: wrap; }
       nav a { padding: 6px 10px; }
-      .container { padding: 18px; }
+      .container { padding: 16px; }
+      h1 { font-size: clamp(24px, 6.4vw, 38px); line-height: 1.2; }
     }
-    @media (max-width: 480px) { .container { padding: 14px; } }
+    @media (max-width: 480px) {
+      .container { padding: 14px; }
+      .hero { gap: 12px; }
+      .section-title h3 { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -123,6 +139,7 @@
   </header>
 
   <main class="container">
+    <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-card">
         <h1>Builder of clean, robust .NET apps</h1>
@@ -144,11 +161,13 @@
       </div>
       <div class="portrait-wrap">
         <div class="blob">
+          <!-- Optional headshot -->
           <img src="assets/avatar.jpg" alt="Portrait" onerror="this.style.display='none'"/>
         </div>
       </div>
     </section>
 
+    <!-- WORK / PROJECTS -->
     <section id="work">
       <div class="section-title">
         <h3>Selected Work</h3>
@@ -182,6 +201,7 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about">
       <div class="section-title"><h3>About</h3></div>
       <div class="card">
@@ -189,6 +209,7 @@
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills">
       <div class="section-title"><h3>Skills</h3><div class="section-sub">A mix of daily drivers and tools I’m comfortable with.</div></div>
       <div class="grid">
@@ -201,6 +222,7 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-title"><h3>Experience</h3><div class="section-sub">Condensed highlights; full details in résumé.</div></div>
       <div class="timeline">
@@ -227,6 +249,7 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact">
       <div class="section-title"><h3>Contact</h3></div>
       <div class="cta-band">

@@ -1,11 +1,8 @@
-# Portfolio — Two Fixes Only (with favicon)
+# Portfolio — Mobile-Responsive Hero + Real Résumé
 Generated 2025-08-08
 
-## Fixes
-1. **Resume button** is a direct link to `assets/resume.pdf` (works on user & project sites).
-2. **Mobile responsiveness**: nav visible at small widths, hero stacks, images are responsive, thumbnails use aspect-ratio, no overflow.
-
-## How to use
-1. Replace `assets/resume.pdf` with your real resume.
-2. (Optional) Replace `assets/avatar.jpg` with a headshot.
-3. Push to your GitHub repo.
+## Changes
+- **Hero title** responsive via `clamp(24px, 6vw, 40px)` + line-height 1.18 (keeps presence without being too big on phones).
+- **Spacing** tightened: smaller hero padding & section margins to remove the big gap.
+- **Resume** uses your uploaded DOCX converted to `assets/resume.pdf` (best-effort conversion).
+- **Favicon** retained.
