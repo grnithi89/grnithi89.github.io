@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nithya Gujiluva Ravindran – Portfolio</title>
+  <meta name="description" content="Portfolio of Nithya Gujiluva Ravindran – Full Stack .NET Developer in Mount Laurel, NJ. Projects, skills, and contact." />
+  <meta name="theme-color" content="#7c3aed" />
+  <style>
+    /* ==================
+       THEME & TOKENS
+       ================== */
+    :root {
+      /* Light */
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --brand: #7c3aed;       /* purple */
+      --brand-2: #06b6d4;     /* cyan */
+      --ring: rgba(124,58,237,.25);
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(2,8,23,.08);
+      --grad: radial-gradient(800px 400px at 10% -10%, rgba(124,58,237,.15), transparent 60%),
+              radial-gradient(800px 500px at 110% 0%, rgba(6,182,212,.12), transparent 55%),
+              linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b1020;
+        --panel: #0f162f;
+        --text: #e5e7eb;
+        --muted: #9aa4bf;
+        --ring: rgba(56,189,248,.25);
+        --border: #1f2a44;
+        --shadow: 0 10px 40px rgba(0,0,0,.45);
+        --grad: radial-gradient(900px 480px at 10% -10%, rgba(124,58,237,.22), transparent 60%),
+                radial-gradient(900px 560px at 110% 0%, rgba(6,182,212,.18), transparent 60%),
+                linear-gradient(180deg, #0b1020 0%, #0b1020 100%);
+      }
+    }
+    [data-theme="dark"] { /* manual override */ }
+
+    /* Base */
+    * { box-sizing: border-box }
+    html, body { height: 100% }
+    body { margin: 0; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial; color: var(--text); background: var(--grad); }
+    a { color: inherit }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 24px; }
+
+    /* Nav */
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--bg) 85%, transparent); border-bottom: 1px solid var(--border); }
+    .topbar { display:flex; align-items:center; gap: 16px; padding: 10px 0; }
+    .brand { display:flex; align-items:center; gap: 12px; font-weight: 800; letter-spacing: .2px; }
+    .logo { width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow: var(--shadow); }
+    nav { margin-left:auto; display:flex; gap: 6px; flex-wrap: wrap; align-items:center; }
+    nav a { text-decoration:none; padding: 8px 12px; border-radius: 10px; color: var(--muted); }
+    nav a:hover, nav a:focus { outline: none; color: var(--text); background: color-mix(in srgb, var(--panel) 80%, transparent); box-shadow: 0 0 0 6px var(--ring); }
+    .toggle { margin-left: 6px; border: 1px solid var(--border); background: var(--panel); padding: 8px 12px; border-radius: 12px; cursor: pointer; box-shadow: var(--shadow); }
+
+    /* Hero */
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; padding: 26px 0 8px; }
+    .hero-card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 26px; box-shadow: var(--shadow); }
+    h1 { font-size: clamp(30px, 5vw, 56px); line-height: 1.05; margin: 0 0 8px; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(18px, 2.2vw, 22px); font-weight: 600; margin: 0; color: var(--muted); }
+    .cta { display:flex; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:8px; text-decoration:none; color: white; background: linear-gradient(135deg, var(--brand), var(--brand-2)); border: 1px solid color-mix(in srgb, var(--brand) 25%, var(--border)); padding: 10px 14px; border-radius: 12px; box-shadow: var(--shadow); }
+    .btn.alt { color: var(--text); background: var(--panel); border: 1px dashed var(--border); }
+    .social { display:flex; gap: 10px; margin-top: 14px; }
+    .social a { display:inline-flex; padding:8px; border-radius: 10px; border:1px solid var(--border); background: var(--panel); }
+
+    .portrait-wrap { position: relative; }
+    .blob { position: relative; aspect-ratio: 1 / 1; border-radius: 30% 70% 60% 40% / 35% 45% 55% 65%; background: radial-gradient(circle at 30% 20%, rgba(124,58,237,.45), transparent 40%), radial-gradient(circle at 70% 80%, rgba(6,182,212,.45), transparent 35%), linear-gradient(135deg, color-mix(in srgb, var(--panel) 80%, transparent), color-mix(in srgb, var(--panel) 95%, transparent)); border:1px solid var(--border); box-shadow: var(--shadow); display:grid; place-items:center; overflow:hidden; }
+    .blob img { width: 70%; border-radius: 16px; opacity:.95; }
+
+    /* Scroller (skills marquee) */
+    .scroller { overflow:hidden; border: 1px solid var(--border); background: var(--panel); border-radius: 14px; margin-top: 14px; }
+    .track { display:flex; gap: 28px; padding: 10px 18px; will-change: transform; }
+    .pill { font-size: 14px; padding: 6px 10px; border-radius: 999px; border: 1px dashed color-mix(in srgb, var(--brand) 35%, var(--border)); white-space: nowrap; }
+
+    /* Sections */
+    section { margin: 34px 0; }
+    .section-title { display:flex; align-items:center; justify-content:space-between; gap: 12px; margin: 0 0 14px; }
+    .section-title h3 { margin:0; font-size: 22px; letter-spacing:.2px }
+    .section-sub { color: var(--muted); font-size: 14px }
+
+    /* Projects */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .col-6 { grid-column: span 6; }
+    .col-4 { grid-column: span 4; }
+    .col-12 { grid-column: span 12; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 16px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .thumb { height: 180px; border-radius: 12px; border:1px solid var(--border); background: linear-gradient(135deg, color-mix(in srgb, var(--brand) 8%, transparent), color-mix(in srgb, var(--brand-2) 8%, transparent)); }
+    .card h4 { margin: 10px 0 6px; font-size: 18px }
+    .meta { color: var(--muted); font-size: 13px }
+    .card .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px }
+    .tag { font-size: 12px; padding: 4px 8px; border-radius: 999px; border: 1px dashed color-mix(in srgb, var(--brand) 35%, var(--border)); }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(2,8,23,.12); }
+
+    /* Timeline */
+    .timeline { position:relative; display:grid; gap:16px; }
+    .timeline::before { content:""; position:absolute; left: 10px; top:0; bottom:0; width:2px; background: linear-gradient(var(--brand), var(--brand-2)); opacity:.4 }
+    .titem { position:relative; padding-left: 28px; }
+    .titem::before { content:""; position:absolute; left:4px; top:7px; width:12px; height:12px; border-radius:50%; background: linear-gradient(var(--brand), var(--brand-2)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 25%, transparent) }
+
+    /* Testimonials */
+    .slider { position:relative; }
+    .slide { display:none; }
+    .slide.active { display:block; }
+    .quote { font-size:18px; }
+
+    /* Contact CTA */
+    .cta-band { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:18px; border:1px solid var(--border); border-radius:16px; background: linear-gradient(135deg, color-mix(in srgb, var(--panel) 92%, transparent), color-mix(in srgb, var(--panel) 98%, transparent)); box-shadow: var(--shadow) }
+
+    /* Utilities */
+    .muted { color: var(--muted); }
+
+    footer { opacity:.9; padding: 20px 0 60px; border-top: 1px solid var(--border); margin-top: 24px; }
+
+    /* Responsive */
+    @media (max-width: 1000px) { .hero { grid-template-columns: 1fr } }
+    @media (max-width: 820px) { .col-6, .col-4 { grid-column: span 12 } nav { display:none } }
+
+    /* Motion respect */
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation: none !important }
+      .card:hover { transform: none }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Nithya Gujiluva Ravindran</div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <button class="toggle" id="themeToggle" title="Toggle theme">☀︎/☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-card">
+        <h1>Builder of clean, robust .NET apps</h1>
+        <h2 class="muted">Full Stack .NET Developer in Mount Laurel, NJ</h2>
+        <p class="muted">I design and ship data‑driven web apps and APIs using C#, ASP.NET, MVC/Web API, and solid SQL. I love tidy UI, performant APIs, and pragmatic automation.</p>
+        <div class="cta">
+          <a class="btn" id="downloadBtn" href="#">Download Résumé</a>
+          <a class="btn alt" href="#work">See My Work ↓</a>
+        </div>
+        <div class="social" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/grnithi" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.84-2.2 3.78-2.2 4.04 0 4.78 2.66 4.78 6.1V24h-4v-7.6c0-1.82-.03-4.16-2.54-4.16-2.54 0-2.93 1.98-2.93 4.03V24h-4V8z" fill="currentColor"/></svg>
+          </a>
+          <a href="mailto:grnithi@gmail.com" title="Email" aria-label="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 13L2 6.76V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6.76L12 13zM22 6H2l10 6 10-6z" fill="currentColor"/></svg>
+          </a>
+        </div>
+        <div class="scroller" aria-hidden="true">
+          <div class="track" id="track">
+            <span class="pill">C#</span><span class="pill">ASP.NET</span><span class="pill">MVC</span><span class="pill">Web API</span><span class="pill">ADO.NET</span><span class="pill">SQL Server</span><span class="pill">Oracle</span><span class="pill">JavaScript</span><span class="pill">jQuery</span><span class="pill">HTML/CSS</span>
+          </div>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <div class="blob">
+          <!-- Optional headshot: replace src -->
+          <img src="assets/avatar.jpg" alt="Portrait" onerror="this.style.display='none'"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / PROJECTS -->
+    <section id="work">
+      <div class="section-title">
+        <h3>Selected Work</h3>
+        <div class="section-sub">Case‑study style highlights of real work. Swap these with your projects.</div>
+      </div>
+      <div class="grid">
+        <article class="card col-6">
+          <div class="thumb" role="img" aria-label="Profile & Rewards modules"></div>
+          <h4>My Verizon – Profile & Rewards Modules</h4>
+          <div class="meta">Modernized profile management and rewards flows with MVC + Web API.</div>
+          <div class="tags"><span class="tag">ASP.NET MVC</span><span class="tag">Web API 2.0</span><span class="tag">Oracle</span></div>
+        </article>
+        <article class="card col-6">
+          <div class="thumb" role="img" aria-label="Console recovery tool"></div>
+          <h4>Update Recovery Console</h4>
+          <div class="meta">Console app to retry failed cross‑system updates and email run reports.</div>
+          <div class="tags"><span class="tag">C#</span><span class="tag">ADO.NET</span><span class="tag">SQL Server</span></div>
+        </article>
+        <article class="card col-6">
+          <div class="thumb" role="img" aria-label="API hardening"></div>
+          <h4>API Hardening & Query Tuning</h4>
+          <div class="meta">Improved API performance and reliability via query tuning and caching.</div>
+          <div class="tags"><span class="tag">Web API</span><span class="tag">SQL</span><span class="tag">Caching</span></div>
+        </article>
+        <article class="card col-6">
+          <div class="thumb" role="img" aria-label="CI/CD"></div>
+          <h4>Deployment Pipeline Cleanup</h4>
+          <div class="meta">Streamlined CI/CD with better test gates and release hygiene.</div>
+          <div class="tags"><span class="tag">TFS</span><span class="tag">CI/CD</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-title"><h3>About</h3></div>
+      <div class="card">
+        <p class="muted">I’m a pragmatic developer who enjoys making complex things feel simple. My strengths: clean architecture, tidy UIs, and collaborating well with product & QA. In past roles, I’ve helped ship features faster by smoothing the hand‑offs and automating the repetitive bits.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title"><h3>Skills</h3><div class="section-sub">A mix of daily drivers and tools I’m comfortable with.</div></div>
+      <div class="grid">
+        <div class="card col-4"><h4>Frontend</h4><p class="muted">HTML, CSS, JavaScript, jQuery</p></div>
+        <div class="card col-4"><h4>.NET</h4><p class="muted">C#, ASP.NET (Web Forms/MVC), Web API, ADO.NET</p></div>
+        <div class="card col-4"><h4>Data</h4><p class="muted">SQL Server, Oracle (PL/SQL)</p></div>
+        <div class="card col-4"><h4>DevOps</h4><p class="muted">TFS, Git</p></div>
+        <div class="card col-4"><h4>Reporting</h4><p class="muted">SSIS, SSRS</p></div>
+        <div class="card col-4"><h4>Platforms</h4><p class="muted">Windows, Unix/Linux</p></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (condensed, modern) -->
+    <section id="experience">
+      <div class="section-title"><h3>Experience</h3><div class="section-sub">Condensed highlights; full details in résumé.</div></div>
+      <div class="timeline">
+        <div class="titem card">
+          <strong>Senior .NET Programmer</strong> — Verizon India <span class="muted">(Apr 2016 – Oct 2016)</span>
+          <ul class="muted">
+            <li>Profile & Rewards modules with MVC/Web API; AJAX upgrades for speed.</li>
+            <li>Designed REST endpoints and PL/SQL packages; improved DX and reliability.</li>
+          </ul>
+        </div>
+        <div class="titem card">
+          <strong>Software Analyst</strong> — Verizon India <span class="muted">(Aug 2013 – Apr 2016)</span>
+          <ul class="muted">
+            <li>Modernized Home/Services/Profile; SOAP → cleaner data layer.</li>
+            <li>Built SQL Server objects; production support and fixes.</li>
+          </ul>
+        </div>
+        <div class="titem card">
+          <strong>Software Engineer Trainee</strong> — Verizon India <span class="muted">(Mar 2011 – Apr 2013)</span>
+          <ul class="muted">
+            <li>Recovery console to retry failed cross‑system updates; automated reports.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (optional placeholder) -->
+    <section id="testimonials">
+      <div class="section-title"><h3>Kind Words</h3><div class="section-sub">Add short quotes from peers/managers later.</div></div>
+      <div class="slider card" aria-live="polite">
+        <div class="slide active"><p class="quote">“Nithya is dependable and detail‑oriented. She anticipates edge cases and keeps quality high.”</p></div>
+        <div class="slide"><p class="quote">“Great collaborator — communicates clearly and moves projects forward.”</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title"><h3>Contact</h3></div>
+      <div class="cta-band">
+        <div>
+          <div style="font-weight:700">Let’s build something useful.</div>
+          <div class="muted">Email <a href="mailto:grnithi@gmail.com">grnithi@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/grnithi" target="_blank" rel="noopener">LinkedIn</a>.</div>
+        </div>
+        <a class="btn" id="resumeBtn" href="#">Résumé (PDF)</a>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div class="muted">© <span id="year"></span> Nithya Gujiluva Ravindran • Mount Laurel, NJ</div>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth scroll for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Theme toggle with persistence (respects system pref, lets user override)
+    const root = document.documentElement;
+    const key = 'theme-pref';
+    const saved = localStorage.getItem(key);
+    if (saved === 'dark') root.setAttribute('data-theme','dark');
+    if (saved === 'light') root.setAttribute('data-theme','light');
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem(key, next);
+    });
+
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Résumé buttons: expects /assets/resume.pdf
+    function openResume(){
+      const url = new URL(window.location.href);
+      const resumePath = url.origin + url.pathname.replace(/\/[^\/]*$/, '/') + 'assets/resume.pdf';
+      window.open(resumePath, '_blank');
+    }
+    document.getElementById('downloadBtn')?.addEventListener('click', e => { e.preventDefault(); openResume(); });
+    document.getElementById('resumeBtn')?.addEventListener('click', e => { e.preventDefault(); openResume(); });
+
+    // Skills marquee (auto‑scroll)
+    const track = document.getElementById('track');
+    let offset = 0;
+    function loop(){
+      offset -= 0.4; // speed
+      track.style.transform = `translateX(${offset}px)`;
+      if (Math.abs(offset) > track.scrollWidth/2) offset = 0;
+      requestAnimationFrame(loop);
+    }
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) loop();
+
+    // Simple testimonial slider
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let i = 0; setInterval(() => {
+      slides[i].classList.remove('active');
+      i = (i+1) % slides.length;
+      slides[i].classList.add('active');
+    }, 4500);
+  </script>
+</body>
+</html>
